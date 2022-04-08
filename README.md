@@ -9,11 +9,11 @@
 # Setting Up Locally
 
 ```
-git clone https://github.com/<user-name>/Vibee.git
+https://github.com/NikhitaBarat/tinder-clone.git
 
-cd Vibee
+cd tinder-clone
 
-cd client
+cd tinder-clone
 
 # install dependencies required for the project
 npm install
