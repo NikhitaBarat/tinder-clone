@@ -1,7 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import Cards from "./dbcards.js";
-
+import cors from 'cors'
 // app config
 const app = express()
 const port = process.env.PORT || 3001
@@ -10,7 +10,7 @@ const connection_url = `mongodb+srv://admin:sNKUbHe0C2S0NAl1@cluster0.anabo.mong
 
 // middleware
 app.use(express.json())
-
+app.use(cors())
 //db config
 
 mongoose.connect(connection_url)
@@ -21,7 +21,6 @@ app.get('/', (req, res) => {
 })
 
 app.post('/tinder/card', (req, res) => {
-  res.send('Got a POST request')
   const dbCard = req.body;
 
   Cards.create(dbCard, (err, data) => {
@@ -34,7 +33,7 @@ app.post('/tinder/card', (req, res) => {
   })
 });
 
-app.get('/tinder/cards', (req, res) => {
+app.get('/cards', (req, res) => {
   Cards.find((err, data) => {
     if (err) {
       res.status(500).send(err)
@@ -42,6 +41,7 @@ app.get('/tinder/cards', (req, res) => {
     else {
       res.status(200).send(data)
     }
+    return 0;
   })
 })
 
